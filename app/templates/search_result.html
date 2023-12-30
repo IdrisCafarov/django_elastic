@@ -1,0 +1,29 @@
+<!-- search_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    <form action="{% url 'search' %}" method="get">
+        <label for="search-input">Search:</label>
+        <input type="text" id="search-input" name="q" placeholder="Enter your search query...">
+        <button type="submit">Search</button>
+    </form>
+    <h1>Search Results for "{{ query }}"</h1>
+    
+    {% if results %}
+        <ul>
+            {% for result in results %}
+                <li>
+                    <h3>{{ result.title }}</h3>
+                    <p>{{ result.content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html>
