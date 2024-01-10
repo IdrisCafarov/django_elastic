@@ -6,5 +6,5 @@ from .models import *
 
 admin.site.register(Post)
 admin.site.register(Reply)
-
+admin.site.register(Professor)
 

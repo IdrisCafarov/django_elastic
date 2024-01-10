@@ -41,8 +41,16 @@ INSTALLED_APPS = [
     #custom apps
     'core',
     'blog',
+    'account',
     #installed apps
     'django_elasticsearch_dsl',
+    # 'elasticsearch-dsl',
+    'django_elasticsearch_dsl_drf',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'rest_framework',
+    'django_filters',
+    
 
 ]
 
@@ -132,16 +140,27 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+MEDIA_URL = '/static/media/'
+
+
+MEDIA_ROOT = '/vol/web/media'
+STATIC_ROOT = '/vol/web/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+##############################################################################################################################
 
+AUTH_USER_MODEL = 'account.MyUser'
 
 # Elasticsearch
 ELASTICSEARCH_DSL = {
@@ -149,3 +168,18 @@ ELASTICSEARCH_DSL = {
         'hosts': os.getenv("ELASTICSEARCH_DSL_HOSTS", 'localhost:9200')
     },
 }
+
+
+
+REST_FRAMEWORK = {
+    # ... other settings ...
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
+
+
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

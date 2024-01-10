@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Dropdown like Google</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #search-container {
+      position: relative;
+    }
+
+    #search-input {
+      width: 300px;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+      z-index: 1;
+    }
+
+    .result-item {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Search...">
+    <div id="search-results"></div>
+  </div>
+
+  <script>
+    // Sample data for autocomplete suggestions
+    const suggestions = ["Apple", "Banana", "Orange", "Grapes", "Cherry", "Pineapple", "Strawberry"];
+
+    const searchInput = document.getElementById("search-input");
+    const searchResults = document.getElementById("search-results");
+
+    // Event listener for input changes
+    searchInput.addEventListener("input", handleInput);
+
+    // Event listener for item selection
+    searchResults.addEventListener("click", handleSelection);
+
+    function handleInput() {
+      const query = searchInput.value.toLowerCase();
+      const filteredResults = suggestions.filter(item => item.toLowerCase().includes(query));
+
+      // Update the dropdown with filtered results
+      updateDropdown(filteredResults);
+    }
+
+    function handleSelection(event) {
+      if (event.target.classList.contains("result-item")) {
+        searchInput.value = event.target.textContent;
+        searchResults.style.display = "none";
+      }
+    }
+
+    function updateDropdown(results) {
+      if (results.length > 0) {
+        const resultItems = results.map(result => `<div class="result-item">${result}</div>`).join("");
+        searchResults.innerHTML = resultItems;
+        searchResults.style.display = "block";
+      } else {
+        searchResults.innerHTML = "";
+        searchResults.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
