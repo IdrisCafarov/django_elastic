@@ -6,5 +6,9 @@ from .models import *
 
 admin.site.register(Post)
 admin.site.register(Reply)
-admin.site.register(Professor)
 
+class BlogAdmin(admin.ModelAdmin):
+    search_fields = ['title','email']
+
+admin.site.register(Professor, BlogAdmin)
+admin.site.register(Title)

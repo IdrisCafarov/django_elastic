@@ -1,0 +1,75 @@
+{% extends "customer/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+<div class="main-content">
+    <div class="page-content">
+
+        <section class="pt-28 lg:pt-44 pb-28 group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 dark:bg-neutral-900 bg-[url('../images/home/page-title.html')] bg-center bg-cover relative" >
+            <div class="container mx-auto">
+                <div class="grid">
+                    <div class="col-span-12">
+                        <div class="text-center text-white">
+                            <h3 class="mb-4 text-[26px]">Upload Json</h3>
+                            <div class="page-next">
+                                <nav class="inline-block" aria-label="breadcrumb text-center">
+                                    <ol class="flex justify-center text-sm font-medium uppercase">
+                                        <li><a href="{% url "index" %}">Home</a></li>
+                                        {% comment %} <li><i class="bx bxs-chevron-right align-middle px-2.5"></i><a href="javascript:void(0)">Blog</a></li> {% endcomment %}
+                                        <li class="active" aria-current="page"><i class="bx bxs-chevron-right align-middle px-2.5"></i>Upload Json</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="{% static "assets/images/about/shape.png" %}" alt="" class="absolute block bg-cover -bottom-0 dark:hidden">
+            <img src="{% static "assets/images/about/shape-dark.png" %}" alt="" class="absolute hidden bg-cover -bottom-0 dark:block">
+        </section>
+
+        <!-- Start grid -->
+        <div class="center-section">
+            <section style="padding-bottom:100px;" class="pt-16">
+                <div class="container mx-auto">
+                    <div class="grid items-center  mt-5 lg:gap-8 gap-y-8">
+                        <div class="col-span-12 lg:col-span-6">
+                            <div class="mt-4">
+                                {% include "customer/alert.html" %}
+                                <h3 class="mb-2 text-3xl text-gray-900 dark:text-white">Upload Your Json</h3>
+                                {% comment %} <p class="text-gray-500 dark:text-gray-300">U can upload your json file here</p> {% endcomment %}
+                                <form style="padding-top:50px;" method="post" onsubmit="return validateForm()" class="mt-4 contact-form" name="myForm" id="myForm" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <span id="error-msg"></span>
+                                    <div class="grid grid-cols-12 gap-5">
+                                        <div class="col-span-12">
+                                            <div class="mb-3">
+                                                <label for="nameInput" class="text-gray-900 dark:text-gray-50">Your Json File</label>
+                                                {{form.json_file|as_crispy_field}}
+                                            </div>
+                                        </div><!--end col-->
+                                        
+                                    </div><!--end row-->
+                                    <div style="padding-top:50px;" class="text-right">
+                                        <button type="submit" id="submit" name="submit" class="text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500"> Submit Your File <i class="uil uil-message ms-1"></i></button>
+                                    </div>
+                                </form><!--end form-->
+                            </div>
+                        </div><!--end col-->
+                        
+                        <!--end col-->
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+        <!-- End grid -->
+       
+    </div>
+</div>
+
+
+{% endblock body %}

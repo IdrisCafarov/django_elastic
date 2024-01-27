@@ -8110,6 +8110,8 @@ body{
 
 .checkbox-wrapper-4 .cbx span {
   float: left;
+  font-size: 12px;
+  white-space: nowrap;
   vertical-align: middle;
   transform: translate3d(0, 0, 0);
 }
@@ -8144,10 +8146,9 @@ body{
 .checkbox-wrapper-4 .cbx span:last-child {
   padding-left: 8px;
   line-height: 18px;
-  max-width: 120px; /* Adjust max-width as needed */
   /* white-space: nowrap; */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
 }
 
 .checkbox-wrapper-4 .cbx:hover span:first-child {

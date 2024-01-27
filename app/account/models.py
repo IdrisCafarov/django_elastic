@@ -47,7 +47,7 @@ class MyUser(AbstractBaseUser):
 
     timestamp = models.DateTimeField(auto_now_add=True)
 
-
+    is_customer = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_disable = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)

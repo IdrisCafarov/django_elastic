@@ -8,7 +8,8 @@ from .views import ProfessorViewSet
 
 router = DefaultRouter()
 router.register(r'professors', ProfessorViewSet, basename='professors')
-router.register(r'search-suggestions', SearchSuggestionView, basename='search-suggestions')
+router.register(r'search-suggestions', SearchSuggestionView, basename='search-suggestions'),
+
 
 
 # router = DefaultRouter()

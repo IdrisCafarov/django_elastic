@@ -5,9 +5,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 import requests
 from django.template.loader import render_to_string
-
-
-
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -20,9 +18,11 @@ import json
 from django.db import IntegrityError
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from elasticsearch_dsl import Q
+from elasticsearch_dsl import Q, SF
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .helpers import *
+from django.db.models import Case, When, Value, IntegerField
+
 
 
 
@@ -36,6 +36,16 @@ from django_elasticsearch_dsl_drf.filter_backends import (
     FunctionalSuggesterFilterBackend
     
 )
+from django_elasticsearch_dsl_drf.constants import (
+    LOOKUP_FILTER_TERMS,
+    LOOKUP_FILTER_RANGE,
+    LOOKUP_FILTER_PREFIX,
+    LOOKUP_FILTER_WILDCARD,
+    LOOKUP_QUERY_IN,
+    LOOKUP_QUERY_EXCLUDE,
+)
+
+
 from .serializers import *
 
 class ProfessorViewSet(DocumentViewSet):
@@ -45,26 +55,60 @@ class ProfessorViewSet(DocumentViewSet):
 
     # Define filter fields
     filter_fields = {
-        'name': 'name',
-        'title': 'title',
-        # other filter fields...
+        'id': {
+            'field': '_id',
+            'lookups': [
+                LOOKUP_FILTER_RANGE,
+                LOOKUP_QUERY_IN,
+            ],
+        },
+      
+        'title': {
+            'field': 'title',
+            'lookups': [
+                LOOKUP_FILTER_TERMS,
+                LOOKUP_FILTER_PREFIX,
+                LOOKUP_FILTER_WILDCARD,
+                LOOKUP_QUERY_IN,
+                LOOKUP_QUERY_EXCLUDE,
+                
+            ],
+        },
+
+        'name': {
+            'field': 'name',
+            'lookups': [
+                LOOKUP_FILTER_TERMS,
+                LOOKUP_FILTER_PREFIX,
+                LOOKUP_FILTER_WILDCARD,
+                LOOKUP_QUERY_IN,
+                LOOKUP_QUERY_EXCLUDE,
+            ],
+        },
+
+        
     }
 
     # Define ordering fields
     ordering_fields = {
-        'name': 'name',
-        'title': 'title',
+        'title': 'title.row',
+        'rating': 'rating',
+        # 'name': 'name',
         # other ordering fields...
     }
 
     # Define search fields
-    search_fields = (
-        'name',
-        'title',
-        'introduction',
-        'email',
+    search_fields = {
+        'research_areas': {'boost': 1,'fuzziness': 'AUTO'},
+        'department': {'boost': 3,'fuzziness': 'AUTO'},
+        'name': {'boost': 6,'fuzziness': 'AUTO'},
+        'introduction': {'boost': 4,'fuzziness': 'AUTO'},
+        'email': {'boost': 7,'fuzziness': 'AUTO'},
+        
         # other searchable fields...
-    )
+    }
+
+    ordering = ('rating',)
 
 
     functional_suggester_fields = {
@@ -79,6 +123,20 @@ class ProfessorViewSet(DocumentViewSet):
         }
     }
 
+    
+    highlight_fields = {
+        'name': {
+            'enabled': True,
+            'options': {
+                'pre_tags': ["<b>"],
+                'post_tags': ["</b>"],
+            }
+        },
+    }
+
+
+    
+
     def get_queryset(self):
         # Start with the default queryset
         queryset = super().get_queryset()
@@ -86,23 +144,84 @@ class ProfessorViewSet(DocumentViewSet):
         # Retrieve additional filter parameters
         selected_universities = self.request.query_params.getlist('universities[]')
         selected_cities = self.request.query_params.getlist('cities[]')
+        selected_titles = self.request.query_params.getlist('titles[]')
+        
         # search_query = self.request.query_params.get('search', '') 
 
         # Apply filters for universities
         if selected_universities:
+            print(selected_universities)
             university_filters = [Q('term', university=university) for university in selected_universities]
             queryset = queryset.query('bool', should=university_filters)
 
         # Apply filters for cities
         if selected_cities:
-            city_filters = [Q('term', city=city) for city in selected_cities]
+            city_filters = [Q('term', city=city) for city in selected_cities]   
             queryset = queryset.query('bool', should=city_filters)
 
-        # if search_query:
-        #     queryset = queryset.query('multi_match', query=search_query, fields=['name', 'title', 'introduction', 'email'])
+        # Apply filters for titles
+        must_not_filters = []
+        exclude_filters = []
+        title_list = []
+        if selected_titles:
+            if "Associate Professor" not in selected_titles:
+                title_list+=["Associate Professor"]
+                # # Create a filter to exclude exact matches for "Associate Professor"
+            if "Assistant Professor" not in selected_titles:
+                title_list+=["Assistant Professor"]
+                # Create a filter to exclude exact matches for "Associate Professor"    
+            if "Adjunct professor" not in selected_titles:
+                title_list+=["Adjunct professor"]
+                # Create a filter to exclude exact matches for "Associate Professor"    
+            else:
+                # No need to exclude "Associate Professor"
+                title_list = []
+            if title_list:
+                print(title_list)
+                exclude_filters = [Q('match', title=f'*{exclude_title}*') for exclude_title in title_list]
+            title_filters = [Q('match', title=f'*{title}*') for title in selected_titles]
+            queryset = queryset.query('bool', must_not=exclude_filters,should=title_filters)
+
+        
+            
 
 
+
+#         sort_script = {
+#     "_script": {
+#         "type": "number",
+#         "script": {
+#             "lang": "painless",
+#             "source": """
+#             int nonEmptyFields = 0;
+#             if (doc['non_empty_field_count'].size() != 0) {
+#                 nonEmptyFields = (int) doc['non_empty_field_count'].value;
+#             }
+
+#             String title = doc['title'].value;
+#             int titlePriority = title.contains('Associate Professor') ? 2 :
+#                                 title.contains('Assistant Professor') ? 3 :
+#                                 title.contains('Professor') ? 1 :
+#                                 title.contains('Lecturer') ? 4 : 99;
+
+#             int orderValue = (nonEmptyFields * -1) + titlePriority;
+#             return orderValue;
+#             """
+#         },
+#         "order": "asc"
+#     }
+# }
+
+
+
+
+
+        # Apply script-based sorting
+        # queryset = queryset.sort(sort_script)
+        
         return queryset
+    
+   
     
 
 
@@ -135,13 +254,12 @@ class SearchSuggestionView(ViewSet):
 
 
 
-
+@login_required(login_url='/user_login/')
 def index(request):
     # if request.user.is_authenticated and request.user.is_superuser:
     #     print("salam")
 
-    if not request.user.is_authenticated:
-        return redirect("user_login")
+    
     
 
     query = request.GET.get('q', '')
@@ -153,7 +271,7 @@ def index(request):
     # Access search results
     professors = [hit for hit in results]
 
-    return render(request, 'index.html', {'professors': professors, 'query': query})
+    return render(request, 'customer/index.html', {'professors': professors, 'query': query})
 
 
 
@@ -178,7 +296,7 @@ def index(request):
 
 
 
-
+@login_required(login_url='/user_login/')
 def search_view(request):
     query = request.GET.get('q', '')
 
@@ -189,7 +307,7 @@ def search_view(request):
     # Access search results
     professors = [hit for hit in results]
 
-    return render(request, 'search_result.html', {'professors': professors, 'query': query})
+    return render(request, 'customer/search_result.html', {'professors': professors, 'query': query})
 
 
 
@@ -212,7 +330,7 @@ def search_view(request):
 
 
 
-
+@login_required(login_url='/user_login/')
 def main_search(request):
 
     context={}
@@ -228,8 +346,9 @@ def main_search(request):
     page = request.GET.get('page',1)
     selected_universities = request.GET.getlist('universities[]')
     selected_cities = request.GET.getlist('cities[]')
+    selected_titles = request.GET.getlist('titles[]')
 
-    api_url = f'http://127.0.0.1:8000/api/professors/?'
+    api_url = f'http://127.0.0.1:8000/api/professors/?ordering=-rating&'
 
     if query:
         api_url += f'search={query}&'
@@ -247,6 +366,12 @@ def main_search(request):
         for city in selected_cities:
             api_url += f'cities[]={city}&'
 
+    if selected_titles:
+        # Add multiple cities to the URL
+        for title in selected_titles:
+            api_url += f'titles[]={title}&'
+
+
 
     response = requests.get(api_url)
     print(api_url)
@@ -255,7 +380,7 @@ def main_search(request):
     if response.status_code == 200:
         # Parse the JSON response
         data = response.json()
-        print(data)
+        # print(data)
         professors = data.get('results', [])
         next_page = data.get('next')
         previous_page = data.get('previous')
@@ -276,7 +401,7 @@ def main_search(request):
 
     if request.is_ajax():
         # If it's an AJAX request, return JSON response
-        html = render_to_string("filtered_professors.html", {"professors": professors})
+        html = render_to_string("customer/filtered_professors.html", {"professors": professors})
 
         # Create a data dictionary with the HTML content
         data_dict = {
@@ -293,7 +418,7 @@ def main_search(request):
 
     
 
-    return render(request, 'main_search.html', context)
+    return render(request, 'customer/main_search.html', context)
 
 
 
@@ -314,7 +439,7 @@ def main_search(request):
 
 
 
-
+@login_required(login_url='/user_login/')
 def upload_json(request):
     if request.method == 'POST':
         form = JSONFileUploadForm(request.POST, request.FILES)
@@ -333,16 +458,17 @@ def upload_json(request):
                         phone=item.get('phone', ''),
                         address=item.get('address', ''),
                         achievements=item.get('achievements', ''),
-                        
+                        url=item.get('url', ''),
                         city=item.get('city', ''),
                         province=item.get('province', ''),
-                        country=item.get('country', ''),
+                        country="US",
                         title=item.get('title', ''),
                         email=item.get('email', ''),
                         image_url=item.get('photo', ''),
-                        research_areas=item.get('research_areas', ''),
-                        university=item.get('university', ''),
-                        department=item.get('department', '')
+                        research_areas=item.get('direction', ''),
+                        university=item.get('school', ''),
+                        department=item.get('college', ''),
+                        university_world_ranking=324
                     )
                 except IntegrityError as e:
                     # Catch unique constraint violation (IntegrityError) and log it
@@ -356,28 +482,39 @@ def upload_json(request):
     else:
         form = JSONFileUploadForm()
 
-    return render(request, 'upload_json.html', {'form': form})
+    return render(request, 'customer/upload_json.html', {'form': form})
 
 
 
 
 import ast
 
-
+@login_required(login_url='/user_login/')
 def prof_detail(request,slug):
     context={}
     prof = get_object_or_404(Professor,slug=slug)
     context["prof"] = prof
     
-
+    research_list = []
     # Convert the string to a Python list using ast.literal_eval
     if prof.research_areas:
+        
         try:
-            python_list = ast.literal_eval(prof.research_areas)
-            print(python_list)
-        except (SyntaxError, ValueError) as e:
+            research_list = prof.research_areas.split('\n')
+            # print(research_list)
+        except ValueError as e:
             print(f"Error: {e}")
-        context["research_list"] = python_list
+
+    context["research_list"] = research_list
+
+    print("saalam")
+
+    # professors = Professor.objects.all()
+    for professor_instance in Professor.objects.all():
+        count = professor_instance.get_non_empty_field_count()
+        print("      \n")
+        print(f"Instance {professor_instance.id}: Non-empty field count - {count}")
+
     
-    return render(request,"prof_detail.html",context)
+    return render(request,"customer/prof_detail.html",context)
     

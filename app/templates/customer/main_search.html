@@ -1,0 +1,412 @@
+{% extends "customer/base.html" %}
+
+{% load static %}
+
+{% block body %}
+
+
+<div class="main-content">
+    <div class="page-content">
+
+        <section class="pt-28 lg:pt-44 pb-28 group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 dark:bg-neutral-900 bg-[url('../images/home/page-title.html')] bg-center bg-cover relative" >
+            <div class="container mx-auto">
+                <div class="grid">
+                    <div class="col-span-12">
+                        <div class="text-center text-white">
+                            <h3 class="mb-4 text-[26px]">Professors</h3>
+                            <div class="page-next">
+                                <nav class="inline-block" aria-label="breadcrumb text-center">
+                                    <ol class="flex flex-wrap justify-center text-sm font-medium uppercase">
+                                        <li><a href="{% url "index" %}">Home</a></li>
+                                        <li><i class="bx bxs-chevron-right align-middle px-2.5"></i><a href="javascript:void(0)">Page</a></li>
+                                        <li class="active" aria-current="page"><i class="bx bxs-chevron-right align-middle px-2.5"></i> Professors </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="assets/images/about/shape.png" alt="" class="absolute block bg-cover -bottom-0 dark:hidden">
+            <img src="assets/images/about/shape-dark.png" alt="" class="absolute hidden bg-cover -bottom-0 dark:block">
+        </section>
+        
+        <!-- Start team -->
+            <section class="py-16">
+                <div class="container mx-auto">
+                    <div class="grid grid-cols-12 gap-y-10 lg:gap-10">
+                        <div class="col-span-12 xl:col-span-9">
+                            <div class="job-list-header">
+                                <form id="my-form-id" action="{% url 'main_search' %}" method="GET">
+                                    <div class="grid  gap-3">
+                                        <div class="col-span-12 xl:col-span-3">
+                                            <div class="relative filler-job-form">
+                                                <i class="uil uil-briefcase-alt"></i>
+                                                <input id="searchInput" name="q" type="search" class="w-full filter-job-input-box dark:text-gray-100" id="exampleFormControlInput1" placeholder="Search...." value="{{ query }}" autocomplete="off">
+                                                <div id="suggestionBox"></div>
+                                            </div>
+                                        </div>
+                                       
+                                        <!--end col-->
+                                        <div class="col-span-12 xl:col-span-3">
+                                            <button class="w-full text-white border-transparent btn group-data-[theme-color=violet]:bg-violet-500 group-data-[theme-color=sky]:bg-sky-500 group-data-[theme-color=red]:bg-red-500 group-data-[theme-color=green]:bg-green-500 group-data-[theme-color=pink]:bg-pink-500 group-data-[theme-color=blue]:bg-blue-500 focus:ring focus:ring-custom-500/30" type="submit"><i class="uil uil-filter"></i> Fliter</button>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end grid-->
+                                </form>
+                            </div>
+                            
+                            
+                            <div class="mt-14">
+                                <div class="loader" id="loader"></div>
+                                <div id="filtered-professors-container"></div>
+                               
+                            </div>
+
+
+
+                            <div class="grid grid-cols-12">
+                                <div class="col-span-12">
+                                    <ul id="pagination-container" class="flex justify-center gap-2 mt-8">
+                                        <!-- Pagination links will be generated dynamically by JavaScript -->
+                                    </ul>
+                                </div>
+                                <!--end col-->
+                            </div>
+                        
+
+                            
+                        </div>
+                        <div class="col-span-12 space-y-5 lg:col-span-3">
+                            {% comment %} <div class="scrollable-content" style="max-height: 100vh; overflow-y: auto;position: relative;width:400px;"> {% endcomment %}
+                                <div data-tw-accordion="collapse">
+                                <div class="text-gray-700 accordion-item">
+                                    <h6>
+                                        <button type="button" class="flex items-center justify-between w-full px-4 py-2 font-medium text-left accordion-header group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 active">
+                                            <span class="text-gray-900 dark:text-gray-50">Universities</span>
+                                            <i class="mdi mdi-chevron-down text-xl group-[.active]:rotate-180 text-gray-900 dark:text-gray-50"></i>
+                                        </button>
+                                    </h6>
+
+                                    <div class="block accordion-body">
+                                        <div class="scrollable-content" style="min-height: 400px; max-height: 400px; overflow-y: auto;">
+                                            <div class="p-5" >
+                                            {% comment %} <div>
+                                                <label for="university-filter">Filter by University:</label>
+                                         
+                                            </div> {% endcomment %}
+                                            <div class="mb-3">
+                                                <form class="relative">
+                                                    <div id="checkbox-container">
+                                                        {% comment %} <input type="text" id="universityCheckboxSearch" placeholder="Search cities"> {% endcomment %}
+                                                        {% for university in universities %}
+                                                        <div class="checkbox-wrapper-4 university">
+                                                            <input class="inp-cbx" id="{{university}}" type="checkbox"/>
+                                                            <label class="cbx" for="{{university}}">
+                                                                <span>
+                                                                    <svg width="12px" height="10px">
+                                                                        <use xlink:href="#check-4"></use>
+                                                                    </svg>
+                                                                </span>
+                                                                <span>{{ university }}</span>
+                                                            </label>
+                                                            <svg class="inline-svg">
+                                                                <symbol id="check-4" viewbox="0 0 12 10">
+                                                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                                </symbol>
+                                                            </svg>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </form> 
+                                                   
+                                            </div>
+                                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div data-tw-accordion="collapse">
+                                <div class="text-gray-700 accordion-item dark:text-gray-300">
+                                    <h6>
+                                        <button type="button" class="flex items-center justify-between w-full px-4 py-2 font-medium text-left accordion-header group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 group active">
+                                            <span class="text-gray-900 text-15 dark:text-gray-50"> Cities</span>
+                                            <i class="mdi mdi-chevron-down text-xl group-[.active]:rotate-180 text-gray-900 dark:text-gray-50"></i>
+                                        </button>
+                                    </h6>
+                                    <div class="block accordion-body">
+                                        <div class="scrollable-content" style="max-height: 200px; overflow-y: auto;">
+                                            <div class="p-5">
+                                            <form class="relative">
+                                                <div id="city-checkbox-container">
+                                                    {% comment %} <input type="text" id="cityCheckboxSearch" placeholder="Search cities"> {% endcomment %}
+                                                    {% for city in cities %}
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="{{city}}" type="checkbox"/>
+                                                        <label class="cbx" for="{{city}}">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>{{ city }}</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </form> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+
+
+
+                                {% comment %} Titles         {% endcomment %}
+                                <div data-tw-accordion="collapse">
+                                <div class="text-gray-700 accordion-item dark:text-gray-300">
+                                    <h6>
+                                        <button type="button" class="flex items-center justify-between w-full px-4 py-2 font-medium text-left accordion-header group-data-[theme-color=violet]:bg-violet-500/20 group-data-[theme-color=sky]:bg-sky-500/20 group-data-[theme-color=red]:bg-red-500/20 group group-data-[theme-color=green]:bg-green-500/20 group-data-[theme-color=pink]:bg-pink-500/20 group-data-[theme-color=blue]:bg-blue-500/20 group active">
+                                            <span class="text-gray-900 text-15 dark:text-gray-50"> Titles</span>
+                                            <i class="mdi mdi-chevron-down text-xl group-[.active]:rotate-180 text-gray-900 dark:text-gray-50"></i>
+                                        </button>
+                                    </h6>
+                                    <div class="block accordion-body">
+                                        <div class="scrollable-content" style="max-height: 200px; overflow-y: auto;">
+                                            <div class="p-5">
+                                            <form class="relative">
+                                                <div id="title-checkbox-container">                                                   
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Professor" type="checkbox"/>
+                                                        <label class="cbx" for="Professor">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Professor</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Associate Professor" type="checkbox"/>
+                                                        <label class="cbx" for="Associate Professor">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Associate Professor</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Assistant Professor" type="checkbox"/>
+                                                        <label class="cbx" for="Assistant Professor">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Assistant Professor</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Lecturer" type="checkbox"/>
+                                                        <label class="cbx" for="Lecturer">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Lecturer</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Adjunct professor" type="checkbox"/>
+                                                        <label class="cbx" for="Adjunct professor">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Adjunct professor</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Clinical" type="checkbox"/>
+                                                        <label class="cbx" for="Clinical">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Clinical</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Research Assistant" type="checkbox"/>
+                                                        <label class="cbx" for="Research Assistant">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Research Assistant</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Emeritus" type="checkbox"/>
+                                                        <label class="cbx" for="Emeritus">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Emeritus</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Senior Lecturer" type="checkbox"/>
+                                                        <label class="cbx" for="Senior Lecturer">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Senior Lecturer</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Assistant Lecturer" type="checkbox"/>
+                                                        <label class="cbx" for="Assistant Lecturer">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Assistant Lecturer</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="Distinguished professor" type="checkbox"/>
+                                                        <label class="cbx" for="Distinguished professor">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>Distinguished professor</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="checkbox-wrapper-4 city">
+                                                        <input class="inp-cbx" id="PhD student" type="checkbox"/>
+                                                        <label class="cbx" for="PhD student">
+                                                            <span>
+                                                                <svg width="12px" height="10px">
+                                                                    <use xlink:href="#check-4"></use>
+                                                                </svg>
+                                                            </span>
+                                                            <span>PhD student</span>
+                                                        </label>
+                                                        <svg class="inline-svg">
+                                                            <symbol id="check-4" viewbox="0 0 12 10">
+                                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                            </symbol>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </form> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                </div>
+                                {% comment %}  End        Titles         {% endcomment %}
+                            {% comment %} </div> {% endcomment %}
+                        
+                    </div>
+                </div>
+            </section>
+        <!-- End team -->
+       
+   
+        
+    </div>
+</div>
+
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+

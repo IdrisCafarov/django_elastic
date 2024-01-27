@@ -65,7 +65,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #elastic apm
 ]
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 ROOT_URLCONF = 'app.urls'
 
@@ -163,9 +167,36 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.MyUser'
 
 # Elasticsearch
+# ELASTICSEARCH_DSL = {
+#     'default': {
+#         'hosts': os.getenv("ELASTICSEARCH_DSL_HOSTS", 'localhost:9200')
+#     },
+# }
 ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': os.getenv("ELASTICSEARCH_DSL_HOSTS", 'localhost:9200')
+    "default": {
+        "hosts": ["http://es:9200"],
+        "http_auth": ("elastic", "password"),  # Replace with your Elasticsearch username and password
+    },
+}
+
+
+ELASTICSEARCH_INDEX_NAMES = {
+    'blog.documents.professor_index': 'professors',
+    # 'search_indexes.documents.publisher': 'publisher',
+}
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',  # Set to 'DEBUG' for detailed logs
     },
 }
 
@@ -178,6 +209,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
+LOGIN_URL = '/user_login/'  # Replace with your custom login URL
 
 
 
