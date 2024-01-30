@@ -53,3 +53,25 @@ class LoginForm(forms.Form):
         super().__init__(*args, **kwargs)
         for key, field in self.fields.items():
             field.label = ""
+
+
+
+
+
+
+class JSONFileUploadForm(forms.Form):
+    # json_file = forms.FileField()
+
+    json_file= forms.FileField(max_length=100,widget=forms.FileInput(attrs={
+        "type":"file",
+        "name":"file",
+
+        }
+    ))
+
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            field.label = ""

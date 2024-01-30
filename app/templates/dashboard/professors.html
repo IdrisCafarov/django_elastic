@@ -42,7 +42,7 @@
                 </div>
               </div>
 
-              <div class="filter-choices-input">
+              {% comment %} <div class="filter-choices-input">
                 <input
                   class="form-control"
                   data-choices
@@ -51,7 +51,7 @@
                   id="filter-choices-input"
                   value="T-Shirts"
                 />
-              </div>
+              </div> {% endcomment %}
             </div>
 
             <div class="accordion accordion-flush filter-accordion">
@@ -260,13 +260,22 @@
                 <div class="row g-4">
                   <div class="col-sm-auto">
                     <div>
-                      <a
-                        href="apps-ecommerce-add-product.html"
-                        class="btn btn-success"
-                        id="addproduct-btn"
-                        ><i class="ri-add-line align-bottom me-1"></i> Add
-                        Product</a
-                      >
+                      
+                      <!-- Vertical Variation -->
+                      <div class="btn-group material-shadow" role="group" aria-label="Button group with nested dropdown">
+                       
+                        <div class="btn-group" role="group">
+                            
+                            <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle material-shadow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                              <i class="ri-add-line align-bottom me-1"></i>
+                                Add Professor
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <li><a class="dropdown-item" href="{% url "upload_json" %}">Add Single Professor</a></li>
+                                <li><a class="dropdown-item" href="{% url "upload_json" %}">Add Json File</a></li>
+                            </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm">

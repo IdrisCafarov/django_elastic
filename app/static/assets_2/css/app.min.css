@@ -8547,7 +8547,7 @@ button {
   margin-left: 0.255em;
   font-size: 15px;
   line-height: 15px;
-  content: "\f0140";
+  /* content: "\f0140"; */
   font-family: "Material Design Icons";
 }
 .dropdown-menu {

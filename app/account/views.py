@@ -172,3 +172,33 @@ def professors(request):
         return JsonResponse(data=data_dict, safe=False)
    
     return render(request,"dashboard/professors.html",context)
+
+
+
+def upload_json(request):
+    
+
+    return render(request,"dashboard/upload_json.html")
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import JSONFileUploadSerializer
+import json
+
+class JSONFilesUploadView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = JSONFilesUploadSerializer(data=request.data)
+
+        if serializer.is_valid():
+            files = serializer.validated_data['json_files']
+
+            for file in files:
+                decoded_data = file.read().decode('utf-8')
+                data = json.loads(decoded_data)
+                # Process each JSON file here
+
+            return Response({"message": "Files uploaded successfully!"}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

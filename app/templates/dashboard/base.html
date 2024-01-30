@@ -29,6 +29,12 @@
     <link href="{% static "assets_2/css/app.min.css" %}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{% static "assets_2/css/custom.min.css" %}" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="{% static "assets_2/images/favicon.ico" %}">
+
+    <!-- Plugins css -->
+    <link href="{% static "assets_2/libs/dropzone/dropzone.css" %}" rel="stylesheet" type="text/css" />
+
+   
 
 </head>
 
@@ -2210,10 +2216,32 @@
             });
             </script>
 
+<script>
 
+    Dropzone.autoDiscover=false;
+    const myDropzone= new Dropzone('#my-dropzone',{
+    url:'upload/',
+    maxFiles:5,
+    maxFilesize:2,
+    acceptedFiles:'.json',
+})
+</script>
 
 <!-- JAVASCRIPT -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+<!-- ckeditor -->
+<script src="{% static "assets_2/libs/%40ckeditor/ckeditor5-build-classic/build/ckeditor.js" %}"></script>
+
+<!-- dropzone js -->
+<script src="{% static "assets_2/libs/dropzone/dropzone-min.js" %}"></script>
+
+<script src="{% static "assets_2/js/pages/ecommerce-product-create.init.js" %}"></script>
+
+
+
 
 <script src="{% static "assets_2/libs/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
 <script src="{% static "assets_2/libs/simplebar/simplebar.min.js" %}"></script>
@@ -2233,9 +2261,6 @@
 <script src="{% static "assets_2/libs/swiper/swiper-bundle.min.js" %}"></script>
 
 
-<!-- gridjs js -->
-{% comment %} <script src="{% static "assets_2/libs/gridjs/gridjs.umd.js" %}"></script> {% endcomment %}
-{% comment %} <script src="../../../../unpkg.com/gridjs%406.1.1/plugins/selection/dist/selection.umd.js"></script> {% endcomment %}
 <!-- Dashboard init -->
 <script src="{% static "assets_2/js/pages/dashboard-ecommerce.init.js" %}"></script>
 

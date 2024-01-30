@@ -102,7 +102,7 @@ class ProfessorViewSet(DocumentViewSet):
         'research_areas': {'boost': 1,'fuzziness': 'AUTO'},
         'department': {'boost': 3,'fuzziness': 'AUTO'},
         'name': {'boost': 6,'fuzziness': 'AUTO'},
-        'introduction': {'boost': 4,'fuzziness': 'AUTO'},
+        'introduction': {'boost': 4},
         'email': {'boost': 7,'fuzziness': 'AUTO'},
         
         # other searchable fields...
@@ -163,26 +163,24 @@ class ProfessorViewSet(DocumentViewSet):
         must_not_filters = []
         exclude_filters = []
         title_list = []
-        if selected_titles:
-            if "Associate Professor" not in selected_titles:
-                title_list+=["Associate Professor"]
-                # # Create a filter to exclude exact matches for "Associate Professor"
-            if "Assistant Professor" not in selected_titles:
-                title_list+=["Assistant Professor"]
-                # Create a filter to exclude exact matches for "Associate Professor"    
-            if "Adjunct professor" not in selected_titles:
-                title_list+=["Adjunct professor"]
-                # Create a filter to exclude exact matches for "Associate Professor"    
-            else:
-                # No need to exclude "Associate Professor"
-                title_list = []
-            if title_list:
-                print(title_list)
-                exclude_filters = [Q('match', title=f'*{exclude_title}*') for exclude_title in title_list]
-            title_filters = [Q('match', title=f'*{title}*') for title in selected_titles]
-            queryset = queryset.query('bool', must_not=exclude_filters,should=title_filters)
+        # Add titles to title_list if they are not in selected_titles
+        if "Associate Professor" not in selected_titles:
+            title_list.append("Associate Professor")
+        if "Assistant Professor" not in selected_titles:
+            title_list.append("Assistant Professor")
+        if "Adjunct professor" not in selected_titles:
+            title_list.append("Adjunct professor")
 
-        
+        # Create filters based on title_list and selected_titles
+        exclude_filters = [Q('wildcard', title=f'*{exclude_title}*') for exclude_title in title_list]
+        title_filters = [Q('wildcard', title=f'*{title}*') for title in selected_titles]
+
+        # Apply filters to the queryset
+        if exclude_filters:
+            queryset = queryset.query('bool', must_not=exclude_filters)
+        if title_filters:
+            queryset = queryset.query('bool', should=title_filters)
+
             
 
 
