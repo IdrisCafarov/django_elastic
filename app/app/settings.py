@@ -182,7 +182,6 @@ ELASTICSEARCH_DSL = {
 
 ELASTICSEARCH_INDEX_NAMES = {
     'blog.documents.professor_index': 'professors',
-    # 'search_indexes.documents.publisher': 'publisher',
 }
 
 

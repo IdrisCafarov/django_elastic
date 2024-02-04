@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.db import IntegrityError
+from django.http import HttpResponseRedirect
 from django.contrib.auth import login,logout, authenticate
 from .forms import *
 
@@ -89,7 +91,7 @@ def dashboard(request):
 def professors(request):
     context={}
 
-    search = Search(index="professor_index")
+    search = Search(index="professors")
 
     universities = set(hit.university for hit in search.scan() if hit.university != '')
     cities = set(hit.city for hit in search.scan() if hit.city != '')
@@ -176,29 +178,73 @@ def professors(request):
 
 
 def upload_json(request):
-    
+    if request.method == 'POST':
+        uploaded_files = request.FILES.getlist('file')
+        print("salam")
+        for field_name, uploaded_file in request.FILES.lists():
+            print("salam")
+            print(field_name,uploaded_file)
+        print(request.FILES.lists())
+        print(uploaded_files)
+        for uploaded_file in uploaded_files:
+            try:
+                # Process the uploaded JSON file
+                decoded_data = uploaded_file.read().decode('utf-8')
+                data = json.loads(decoded_data)
 
-    return render(request,"dashboard/upload_json.html")
+                # Save the data to the database
+                for item in data:
+                    try:
+                        Professor.objects.create(
+                            name=item.get('name', ''),
+                            introduction=item.get('introduction', ''),
+                            phone=item.get('phone', ''),
+                            address=item.get('address', ''),
+                            achievements=item.get('achievements', ''),
+                            url=item.get('url', ''),
+                            city=item.get('city', ''),
+                            province=item.get('province', ''),
+                            country="US",
+                            title=item.get('title', ''),
+                            email=item.get('email', ''),
+                            image_url=item.get('photo', ''),
+                            research_areas=item.get('direction', ''),
+                            university=item.get('school', ''),
+                            department=item.get('college', ''),
+                            university_world_ranking=324
+                        )
+                    except IntegrityError as e:
+                        # Catch unique constraint violation (IntegrityError) and log it
+                        print(f"IntegrityError: {e}")
+                        # Optionally, you can skip the current iteration and continue with the next one
+                        continue
+            except Exception as e:
+                return JsonResponse({'error': str(e)}, status=400)
+        # Return success response
+        return JsonResponse({'message': 'Data uploaded successfully!'})
+    
+    
+    return render(request, 'dashboard/upload_json.html')
 
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import JSONFileUploadSerializer
+# from .serializers import JSONFileUploadSerializer
 import json
 
-class JSONFilesUploadView(APIView):
-    def post(self, request, *args, **kwargs):
-        serializer = JSONFilesUploadSerializer(data=request.data)
+# class JSONFilesUploadView(APIView):
+#     def post(self, request, *args, **kwargs):
+#         serializer = JSONFilesUploadSerializer(data=request.data)
 
-        if serializer.is_valid():
-            files = serializer.validated_data['json_files']
+#         if serializer.is_valid():
+#             files = serializer.validated_data['json_files']
 
-            for file in files:
-                decoded_data = file.read().decode('utf-8')
-                data = json.loads(decoded_data)
-                # Process each JSON file here
+#             for file in files:
+#                 decoded_data = file.read().decode('utf-8')
+#                 data = json.loads(decoded_data)
+#                 # Process each JSON file here
 
-            return Response({"message": "Files uploaded successfully!"}, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#             return Response({"message": "Files uploaded successfully!"}, status=status.HTTP_201_CREATED)
+#         else:
+#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

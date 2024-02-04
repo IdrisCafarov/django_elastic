@@ -234,7 +234,7 @@ class SearchSuggestionView(ViewSet):
         if not query:
             return []
 
-        search = Search(index='professor_index')
+        search = Search(index='professors')
         search = search.suggest('professor_suggester', query, completion={'field': 'suggest'})
         response = search.execute()
 
@@ -250,10 +250,12 @@ class SearchSuggestionView(ViewSet):
 ##########################################################################
 
 
+from django.conf import settings
 
 
 @login_required(login_url='/user_login/')
 def index(request):
+    print(settings.ELASTICSEARCH_INDEX_NAMES)
     # if request.user.is_authenticated and request.user.is_superuser:
     #     print("salam")
 
@@ -263,7 +265,7 @@ def index(request):
     query = request.GET.get('q', '')
 
     # Use Elasticsearch DSL to perform the search
-    search = Search(index='professor_index').query('multi_match', query=query, fields=['name^3', 'title^2', 'email', 'research_areas^2'])
+    search = Search(index='professors').query('multi_match', query=query, fields=['name^3', 'title^2', 'email', 'research_areas^2'])
     results = search.execute()
 
     # Access search results
@@ -333,7 +335,7 @@ def main_search(request):
 
     context={}
 
-    search = Search(index="professor_index")
+    search = Search(index="professors")
 
     universities = set(hit.university for hit in search.scan() if hit.university != '')
     cities = set(hit.city for hit in search.scan() if hit.city != '')

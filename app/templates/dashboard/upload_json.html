@@ -1,6 +1,6 @@
 {% extends "dashboard/base.html" %}
 {% load static %}
-{% load cripsy_forms_tags %}
+{% load crispy_forms_tags %}
 
 
 
@@ -35,7 +35,7 @@
                     </div>
                     <!-- end page title -->
 
-                    <form enctype='multipart/form-data' action="/api/upload-json/" method='POST' id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
+                    <form enctype='multipart/form-data' action="/upload_json/" method='POST' id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-8">
