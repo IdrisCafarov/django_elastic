@@ -9,6 +9,7 @@ from django.contrib.auth.forms import SetPasswordForm
 
 
 from account.models import *
+from blog.models import *
 
 
 # get custom user
@@ -68,6 +69,150 @@ class JSONFileUploadForm(forms.Form):
 
         }
     ))
+
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            field.label = ""
+
+
+
+
+
+class UpdateDataForm(forms.ModelForm):
+    name = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Name"
+        }
+    ))
+    phone = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Phone Number"
+        }
+    ))
+    email = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'email',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Email"
+        }
+    ))
+    image_url = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Image Url"
+        }
+    ))
+    url = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Url"
+        }
+    ))
+    address = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Address"
+        }
+    ))
+    country = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Country"
+        }
+    ))
+    province = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Province"
+        }
+    ))
+    city = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"City"
+        }
+    ))
+
+    research_areas = forms.CharField(widget=forms.Textarea(attrs={
+        # 'type':'text',
+        'id':'meta-description-input',
+        'class':'form-control',
+        'placeholder':"Research Areas",
+        "rows":"3"
+        }
+    ))
+    
+    introduction = forms.CharField(widget=forms.Textarea(attrs={
+        # 'type':'text',
+        'id':'meta-description-input',
+        'class':'form-control',
+        'placeholder':"Introduction",
+        "rows":"3"
+        }
+    ))
+    achievements = forms.CharField(widget=forms.Textarea(attrs={
+        # 'type':'text',
+        'id':'meta-description-input',
+        'class':'form-control',
+        'placeholder':"Achievements",
+        "rows":"3"
+        }
+    ))
+    title = forms.ModelChoiceField(queryset=Title.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-select',
+        # 'name': 'regions',
+        'id': 'choices-publish-status-input',
+    }))
+    university = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"University"
+        }
+    ))
+    department = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"Department"
+        }
+    ))
+    university_world_ranking = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+        'type':'number',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"University World Ranking"
+        }
+    ))
+    public = forms.BooleanField(
+        widget=forms.Select(choices=[(True, 'Public'),(False, 'Hidden')], attrs={
+            'class': 'form-select',
+            'id': 'choices-publish-status-input',
+        }),
+        
+    )
+        
+    
+
+    
+
+    class Meta:
+        model = Professor
+        fields = ('name','phone','email','image_url','url','address','country','province','city','research_areas','introduction','title','university','department','university_world_ranking','public','achievements')
+
 
 
 

@@ -101,13 +101,14 @@ class ProfessorDocument(Document):
     )
 
     image_url = StringField()
+    public = fields.BooleanField()
     email = StringField()
     phone = StringField()
     address = StringField()
     slug = KeywordField(index=False, store=True)
     suggest = fields.CompletionField()
     non_empty_field_count = fields.IntegerField(attr="get_non_empty_field_count")
-    rating = fields.FloatField(attr="calculate_rating")
+    rating = fields.FloatField()
 
     
 

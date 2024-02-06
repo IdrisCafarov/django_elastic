@@ -18989,3 +18989,39 @@ span.flatpickr-weekday {
   font-weight: bold; /* Custom font weight */
   /* Additional styling */
 }
+
+
+
+
+
+
+/* alert */
+
+
+/* CSS for fade-in and fade-out animation */
+@keyframes fadeInOut {
+  0% {
+      opacity: 0;
+  }
+  10% {
+      opacity: 1;
+  }
+  90% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+/* Apply the animation to the alert messages */
+.alert {
+  animation: fadeInOut 4s ease-out; /* Adjust the duration and timing function as needed */
+}
+
+
+
+
+/* .blur {
+  filter: blur(4px); 
+} */

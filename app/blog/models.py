@@ -46,6 +46,8 @@ class Title(models.Model):
         return self.name
     
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Professor(models.Model):
     name = models.CharField(max_length=1000,null=True, blank=True)
@@ -65,81 +67,47 @@ class Professor(models.Model):
     university = models.CharField(max_length=1000,null=True,blank=True)
     university_world_ranking = models.PositiveIntegerField(default=0,null=True)
     department = models.CharField(max_length=1000,null=True,blank=True)
+    public = models.BooleanField(default=True)
+    rating = models.FloatField(default=0)
+    # draft = models.BooleanField(default=False)
 
 
-    PROFESSOR_TITLES_RATINGS = {
-        'Associate Professor': 2.3,
-        'Assistant Professor': 2.1,
-        'Lecturer': 1.9,
-        'Adjunct Professor': 1.7,
-        'Clinical': 1.5,
-        'Research Assistant': 1.3,
-        'Emeritus': 2.0,
-        'Senior Lecturer': 1.8,
-        'Assistant Lecturer': 1.6,
-        'Distinguished Professor': 2.7,
-        'PhD Student': 1.0,
-        'Professor': 2.5,
+    TITLE_WEIGHTS = {
+        "Professor": 1.0,
+        "Associate Professor": 0.9,
+        "Assistant Professor": 0.8,
+        "Lecturer": 0.7,
+        "Adjunct Professor": 0.6,
+        "Clinical": 0.5,
+        "Research Assistant": 0.4,
+        "Emeritus": 0.9,
+        "Senior Lecturer": 0.7,
+        "Assistant Lecturer": 0.6,
+        "Distinguished Professor": 1.1,
+        "PhD student": 0.3
     }
 
-
-    def get_non_empty_field_count(self):
-        # Filter out fields not defined in the Professor model
-        professor_fields = [field.attname for field in self._meta.fields if field.model == Professor]
-    
-        # Calculate the number of non-empty fields
-        non_empty_field_count = sum(1 for field_name in professor_fields if getattr(self, field_name) not in [None, ''])
-        
-        return non_empty_field_count-1
-    
-    
-        
     def calculate_rating(self):
-        
-        # Title rating
-        title_rating = 0.0
-        # More detailed title rating calculation
-        for title, rating in self.PROFESSOR_TITLES_RATINGS.items():
-            if title.lower() in self.title.lower():
-                title_rating = rating
-                break  # Assumes the first match determines the rating
-        
-        # Dummy non-empty field count - replace with actual logic
-        non_empty_field_count = self.get_non_empty_field_count()  # Example: replace with the actual logic to count non-empty fields
-        max_count = 17
-        step = 0.5
-        rating_mapping = {i: i * step for i in range(max_count + 1)}
-        non_empty_fields_rating = rating_mapping.get(non_empty_field_count, 0.0)
-        
-        
-        # University world ranking rating
-        if self.university_world_ranking is not None:
-            if self.university_world_ranking == 0:
-                university_world_ranking_rating = 0.0
-            elif self.university_world_ranking <= 10:
-                university_world_ranking_rating = 2.0
-            elif self.university_world_ranking <= 100:
-                university_world_ranking_rating = 1.8
-            elif self.university_world_ranking <= 500:
-                university_world_ranking_rating = 1.5
-            elif self.university_world_ranking <= 1000:
-                university_world_ranking_rating = 1.2
-            elif self.university_world_ranking <= 10000:
-                university_world_ranking_rating = 1.0
-            elif self.university_world_ranking <= 50000:
-                university_world_ranking_rating = 0.8
-            elif self.university_world_ranking <= 100000:
-                university_world_ranking_rating = 0.5
-            else:
-                university_world_ranking_rating = 0.0
+        # Calculate the rating based on the count of non-empty fields, university world ranking, and title
+        non_empty_fields = [
+            self.name, self.title, self.phone, self.address,
+            self.introduction, self.achievements, self.city,
+            self.province, self.country, self.email, self.slug,
+            self.image_url, self.url, self.research_areas,
+            self.university, self.department
+        ]
+        non_empty_fields_count = sum(field is not None for field in non_empty_fields)
+
+        if non_empty_fields_count == 0:
+            self.rating = 0.0
         else:
-            university_world_ranking_rating = 0.0
-        
-        # Calculate the overall rating
-        print(title_rating,non_empty_fields_rating,university_world_ranking_rating)
-        rating = title_rating + non_empty_fields_rating + university_world_ranking_rating
-        # rating = min(total_rating, 10)
-        return rating
+            title_weight = self.TITLE_WEIGHTS.get(self.title, 0)
+            non_empty_fields_rating = non_empty_fields_count / len(non_empty_fields)
+            world_ranking_factor = 0.5  # Adjust as needed
+            title_score = title_weight * 0.5 if self.title else 0  # Assuming half weight for title
+            world_ranking_score = self.university_world_ranking * world_ranking_factor
+            self.rating = (non_empty_fields_rating + title_score + world_ranking_score) * 10  # Scale to 0-10
+        self.save()
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -152,8 +120,17 @@ class Professor(models.Model):
 
     class Meta:
         unique_together = ['name', 'title','research_areas','university','department']
- 
 
+# @receiver(post_save, sender=Professor)
+# def update_professor_rating(sender, instance, **kwargs):
+#     instance.calculate_rating()
+
+
+@receiver(post_save, sender=Professor)
+def after_save(sender, instance, created, **kwargs):
+    if created:
+
+        instance.calculate_rating()
 
 
 

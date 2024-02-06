@@ -2,15 +2,10 @@
 
 <div class="card-body">
     <div class="tab-content text-muted">
-      <div
-        class="tab-pane active"
-        id="productnav-all"
-        role="tabpanel"
-      >
-        <div
-          id="table-product-list-all"
-          class="table-card gridjs-border-none"
-        >
+      
+        <div id="table-product-list-all" class="table-card gridjs-border-none">
+        
+        {% if professors %}
           <table
             role="grid"
             class="gridjs-table"
@@ -93,6 +88,7 @@
               </tr>
             </thead>
             <tbody class="gridjs-tbody">
+              
                 {% for result in professors %}
               <tr class="gridjs-tr">
                 <td data-column-id="#" class="gridjs-td">
@@ -126,7 +122,7 @@
                       <div class="flex-grow-1">
                         <h5 class="fs-14 mb-1">
                           <a
-                            href="apps-ecommerce-product-details.html"
+                            href="{% url "dashboard_professor_detail" result.slug %}"
                             class="text-body"
                             >{{result.name}}</a
                           >
@@ -177,7 +173,7 @@
                         <li>
                           <a
                             class="dropdown-item"
-                            href="apps-ecommerce-product-details.html"
+                            href="{% url "dashboard_professor_detail" result.slug %}"
                             ><i
                               class="ri-eye-fill align-bottom me-2 text-muted"
                             ></i>
@@ -188,7 +184,7 @@
                           <a
                             class="dropdown-item edit-list"
                             data-edit-id="1"
-                            href="apps-ecommerce-add-product.html"
+                            href="{% url "dashboard_update_professor" result.slug %}"
                             ><i
                               class="ri-pencil-fill align-bottom me-2 text-muted"
                             ></i>
@@ -215,36 +211,32 @@
                 </td>
               </tr>
               {% endfor %}
+              {% else %}
+              <div class="py-4 text-center">
+                <lord-icon
+                  src="https://cdn.lordicon.com/msoeawqm.json"
+                  trigger="loop"
+                  colors="primary:#405189,secondary:#0ab39c"
+                  style="width: 72px; height: 72px"
+                >
+                </lord-icon>
+                <h5 class="mt-4">Sorry! No Result Found</h5>
+              </div>
+              {% endif %}
             </tbody>
           </table>
         </div>
         
-      </div>
       <!-- end tab pane -->
 
-      <div
-        class="tab-pane"
-        id="productnav-published"
-        role="tabpanel"
-      >
-        <div
-          id="table-product-list-published"
-          class="table-card gridjs-border-none"
-        ></div>
-      </div>
-      <!-- end tab pane -->
+      
+        
 
-      <div class="tab-pane" id="productnav-draft" role="tabpanel">
-        <div class="py-4 text-center">
-          <lord-icon
-            src="https://cdn.lordicon.com/msoeawqm.json"
-            trigger="loop"
-            colors="primary:#405189,secondary:#0ab39c"
-            style="width: 72px; height: 72px"
-          >
-          </lord-icon>
-          <h5 class="mt-4">Sorry! No Result Found</h5>
-        </div>
+        
+
+
+
+
       </div>
       <!-- end tab pane -->
     </div>

@@ -1,0 +1,224 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block body %}
+ <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                                <h4 class="mb-sm-0">Create Product</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                        <li class="breadcrumb-item active">Create Product</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    
+                    <form method="POST" id="createproduct-form" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-8">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
+                                            
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#addproduct-general-info" role="tab">
+                                                    Add Professor
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end card header -->
+                                    <div class="card-body">
+                                        <div class="tab-content">
+                                            
+                                            <!-- end tab-pane -->
+
+                                            <div class="tab-pane active" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-title-input"> Name</label>
+                                                            {{form.name|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">Phone Number</label>
+                                                            {{form.phone|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">Address</label>
+                                                            {{form.address|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">Email</label>
+                                                            {{form.email|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">Country</label>
+                                                            {{form.country|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">Province</label>
+                                                            {{form.province|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">City</label>
+                                                            {{form.city|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">Image Url</label>
+                                                            {{form.image_url|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="meta-keywords-input">Website Url</label>
+                                                            {{form.url|as_crispy_field}}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                   
+                                                    <!-- end col -->
+                                                </div>
+                                                <!-- end row -->
+
+                                                <div>
+                                                    <label class="form-label" for="meta-description-input">Introduction</label>
+                                                    {{form.introduction|as_crispy_field}}
+                                                </div>
+                                                <div>
+                                                    <label class="form-label" for="meta-description-input">Achievements</label>
+                                                    {{form.achievements|as_crispy_field}}
+                                                </div>
+                                                <div>
+                                                    <label class="form-label" for="meta-description-input">Research Areas</label>
+                                                    {{form.research_areas|as_crispy_field}}
+                                                </div>
+                                            </div>
+                                            <!-- end tab pane -->
+                                        </div>
+                                        <!-- end tab content -->
+                                    </div>
+                                    <!-- end card body -->
+                                </div>
+
+
+                               
+
+                               
+
+                                
+                                <!-- end card -->
+                                <div class="text-end mb-3">
+                                    <button type="submit" class="btn btn-success w-sm">Submit</button>
+                                </div>
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Publish</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="choices-publish-status-input" class="form-label">Title</label>
+
+                                            {{form.title|as_crispy_field}}
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label" for="meta-keywords-input">University</label>
+                                            {{form.university|as_crispy_field}}
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label" for="meta-keywords-input">Department</label>
+                                            {{form.department|as_crispy_field}}
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="meta-keywords-input">University World Ranking</label>
+                                            {{form.university_world_ranking|as_crispy_field}}
+                                        </div>
+                                        
+
+                                        <div>
+                                            <label for="choices-publish-visibility-input" class="form-label">Visibility</label>
+                                            {{form.public|as_crispy_field}}
+                                        </div>
+                                    </div>
+                                    <!-- end card body -->
+                                </div>
+                                <!-- end card -->
+
+                               
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </form>
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © Velzon.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Design & Develop by Themesbrand
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- end main content-->
+
+
+
+
+
+
+{% endblock body %}

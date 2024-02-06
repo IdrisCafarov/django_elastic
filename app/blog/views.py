@@ -85,6 +85,7 @@ class ProfessorViewSet(DocumentViewSet):
                 LOOKUP_QUERY_EXCLUDE,
             ],
         },
+        'public': 'public',
 
         
     }

@@ -105,6 +105,7 @@ def professors(request):
     selected_universities = request.GET.getlist('universities[]')
     selected_cities = request.GET.getlist('cities[]')
     selected_titles = request.GET.getlist('titles[]')
+    selected_tab = request.GET.get('tab', '')
 
     api_url = f'http://127.0.0.1:8000/api/professors/?ordering=-rating&'
 
@@ -131,18 +132,41 @@ def professors(request):
 
 
 
-    response = requests.get(api_url)
-    print(api_url)
+    api_url_2 = api_url + 'public=false'
+    response_non_public = requests.get(api_url_2)
 
+    api_url_3 = api_url + 'public=true'
+    response_public = requests.get(api_url_3)
+
+
+    
+    print("salam")
+    print(selected_tab)
+    if selected_tab:
+        if selected_tab == 'published':
+            api_url += 'public=true&'
+        elif selected_tab == 'draft':
+            api_url += 'public=false&'
+        # api_url += f'selected_tab={selected_tab}&'
+
+
+    print(api_url)
+    response = requests.get(api_url)
+    
 
     if response.status_code == 200:
         # Parse the JSON response
         data = response.json()
+        data_2 = response_non_public.json()
+        data_3 = response_public.json()
+        total_non_public = data_2.get('count', 0)
+        
         # print(data)
         professors = data.get('results', [])
         next_page = data.get('next')
         previous_page = data.get('previous')
         total_data_count = data.get('count', 0)
+        total_public_count = data_3.get('count', 0)
         items_per_page = 10
         total_pages = (total_data_count + items_per_page - 1) // items_per_page
        
@@ -168,12 +192,61 @@ def professors(request):
             "previous_page": previous_page,
             "totalPages": total_pages,
             "currentPage": page,
+            "totalCount": total_non_public + total_public_count,
+            "totalNonPublicCount": total_non_public,
+            "totalPublicCount": total_public_count
         }
 
         # Return the HTML content as JSON response
         return JsonResponse(data=data_dict, safe=False)
    
     return render(request,"dashboard/professors.html",context)
+
+@login_required(login_url='/user_login/')
+def professor_detail(request,slug):
+    context = {}
+    professor = get_object_or_404(Professor,slug=slug)
+    research_list = []
+    # Convert the string to a Python list using ast.literal_eval
+    if professor.research_areas:
+        
+        try:
+            research_list = professor.research_areas.split('\n')
+            # print(research_list)
+        except ValueError as e:
+            print(f"Error: {e}")
+
+    context["research_list"] = research_list
+
+    context["professor"] = professor
+
+
+
+
+    return render(request,"dashboard/professor_detail.html",context)
+
+
+def professor_update(request,slug=None):
+    # Check if the pk is provided, if yes, then it's an update operation
+    instance = get_object_or_404(Professor, slug=slug) if slug else None
+    
+    if request.method == 'POST':
+        print("indisde methdo")
+        form = UpdateDataForm(request.POST, instance=instance)
+        if form.is_valid():
+            print("inside valiud")
+            form.save()
+            if slug:
+                messages.success(request,'Succesfully Updated')
+            else:
+                messages.success(request,'Succesfully Added')
+            return redirect('dashboard_professors')
+        else:
+            messages.error(request,'Error occured while handling')
+    else:
+        form = UpdateDataForm(instance=instance)
+    
+    return render(request, 'dashboard/add_professor.html', {'form': form})
 
 
 
