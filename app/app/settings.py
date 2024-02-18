@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-61w=hi5637w!o*uwgk_#l^6)7axc!ty)pdi==078u!$5$%^y78
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -50,11 +50,13 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'rest_framework',
     'django_filters',
+    'channels',
+    
     
 
 ]
 
-
+# ASGI_APPLICATION = 'app.asgi.application'
 
 
 MIDDLEWARE = [

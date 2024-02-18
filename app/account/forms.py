@@ -82,63 +82,63 @@ class JSONFileUploadForm(forms.Form):
 
 
 class UpdateDataForm(forms.ModelForm):
-    name = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    name = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Name"
         }
     ))
-    phone = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    phone = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Phone Number"
         }
     ))
-    email = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    email = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'email',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Email"
         }
     ))
-    image_url = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    image_url = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Image Url"
         }
     ))
-    url = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    url = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Url"
         }
     ))
-    address = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    address = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Address"
         }
     ))
-    country = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    country = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Country"
         }
     ))
-    province = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    province = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Province"
         }
     ))
-    city = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    city = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
@@ -171,26 +171,27 @@ class UpdateDataForm(forms.ModelForm):
         "rows":"3"
         }
     ))
-    title = forms.ModelChoiceField(queryset=Title.objects.all(), widget=forms.Select(attrs={
-        'class': 'form-select',
-        # 'name': 'regions',
-        'id': 'choices-publish-status-input',
-    }))
-    university = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    title = forms.CharField(max_length=1000, widget=forms.TextInput(attrs={
+        'type':'text',
+        'id':'meta-keywords-input',
+        'class':'form-control',
+        'placeholder':"City"
+        }))
+    university = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"University"
         }
     ))
-    department = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    department = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'text',
         'id':'meta-keywords-input',
         'class':'form-control',
         'placeholder':"Department"
         }
     ))
-    university_world_ranking = forms.CharField(max_length=100,widget=forms.TextInput(attrs={
+    university_world_ranking = forms.CharField(max_length=1000,widget=forms.TextInput(attrs={
         'type':'number',
         'id':'meta-keywords-input',
         'class':'form-control',

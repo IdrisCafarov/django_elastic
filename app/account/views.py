@@ -112,8 +112,7 @@ def professors(request):
     if query:
         api_url += f'search={query}&'
 
-    if page:
-        api_url += f'page={page}&'
+    
 
     if selected_universities:
         # Add multiple universities to the URL
@@ -131,17 +130,20 @@ def professors(request):
             api_url += f'titles[]={title}&'
 
 
-
     api_url_2 = api_url + 'public=false'
     response_non_public = requests.get(api_url_2)
 
     api_url_3 = api_url + 'public=true'
     response_public = requests.get(api_url_3)
 
+    if page:
+        api_url += f'page={page}&'
 
     
-    print("salam")
-    print(selected_tab)
+
+
+    
+
     if selected_tab:
         if selected_tab == 'published':
             api_url += 'public=true&'
@@ -250,15 +252,17 @@ def professor_update(request,slug=None):
 
 
 
+
+
+
+
+
 def upload_json(request):
     if request.method == 'POST':
         uploaded_files = request.FILES.getlist('file')
-        print("salam")
-        for field_name, uploaded_file in request.FILES.lists():
-            print("salam")
-            print(field_name,uploaded_file)
-        print(request.FILES.lists())
-        print(uploaded_files)
+        data_to_send = []
+        
+          
         for uploaded_file in uploaded_files:
             try:
                 # Process the uploaded JSON file
@@ -291,14 +295,15 @@ def upload_json(request):
                         print(f"IntegrityError: {e}")
                         # Optionally, you can skip the current iteration and continue with the next one
                         continue
+                    data_to_send.append(item)
+                    print(data_to_send)
             except Exception as e:
                 return JsonResponse({'error': str(e)}, status=400)
         # Return success response
-        return JsonResponse({'message': 'Data uploaded successfully!'})
+        return JsonResponse({'message': 'Data uploaded successfully!','data': data_to_send})
     
     
     return render(request, 'dashboard/upload_json.html')
-
 
 from rest_framework.views import APIView
 from rest_framework.response import Response

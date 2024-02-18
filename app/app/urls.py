@@ -17,15 +17,23 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+# from channels.http import AsgiHandler
+# from channels.routing import ProtocolTypeRouter, URLRouter
+# from channels.auth import AuthMiddlewareStack
+# from channels.routing import ProtocolTypeRouter, URLRouter
+# from account.consumers import ChatConsumer
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('ws/chat/', ChatConsumer.as_asgi()),
     path('',include("blog.urls")),
     path('',include("account.urls")),
+    # path('ws/', include('account.routing.websocket_urlpatterns')),
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -15,6 +15,7 @@ router.register(r'search-suggestions', SearchSuggestionView, basename='search-su
 # router = DefaultRouter()
 
 
+
 urlpatterns = [
     path('api/', include(router.urls)),
 ]

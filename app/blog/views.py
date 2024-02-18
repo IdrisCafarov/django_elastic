@@ -125,15 +125,15 @@ class ProfessorViewSet(DocumentViewSet):
     }
 
     
-    highlight_fields = {
-        'name': {
-            'enabled': True,
-            'options': {
-                'pre_tags': ["<b>"],
-                'post_tags': ["</b>"],
-            }
-        },
-    }
+    # highlight_fields = {
+    #     'name': {
+    #         'enabled': True,
+    #         'options': {
+    #             'pre_tags': ["<b>"],
+    #             'post_tags': ["</b>"],
+    #         }
+    #     },
+    # }
 
 
     
@@ -164,13 +164,14 @@ class ProfessorViewSet(DocumentViewSet):
         must_not_filters = []
         exclude_filters = []
         title_list = []
-        # Add titles to title_list if they are not in selected_titles
-        if "Associate Professor" not in selected_titles:
-            title_list.append("Associate Professor")
-        if "Assistant Professor" not in selected_titles:
-            title_list.append("Assistant Professor")
-        if "Adjunct professor" not in selected_titles:
-            title_list.append("Adjunct professor")
+        if selected_titles:
+            # Add titles to title_list if they are not in selected_titles
+            if "Associate Professor" not in selected_titles:
+                title_list.append("Associate Professor")
+            if "Assistant Professor" not in selected_titles:
+                title_list.append("Assistant Professor")
+            if "Adjunct professor" not in selected_titles:
+                title_list.append("Adjunct professor")
 
         # Create filters based on title_list and selected_titles
         exclude_filters = [Q('wildcard', title=f'*{exclude_title}*') for exclude_title in title_list]
@@ -437,20 +438,33 @@ def main_search(request):
 
 
 
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 
+
+def calculate_progress(data):
+    total_items = len(data)
+    processed_items = Professor.objects.count()  # Assuming each item corresponds to a Professor object
+    if total_items == 0:
+        return 100  # If there are no items, progress is complete
+    else:
+        return int((processed_items / total_items) * 100)  # Calculate progress percentage
 
 @login_required(login_url='/user_login/')
 def upload_json(request):
     if request.method == 'POST':
         form = JSONFileUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            # Process the uploaded JSON file
+            channel_layer = get_channel_layer()
             json_file = request.FILES['json_file']
             decoded_data = json_file.read().decode('utf-8')
             data = json.loads(decoded_data)
 
-            # Save the data to the database
             for item in data:
                 try:
                     Professor.objects.create(
@@ -471,15 +485,24 @@ def upload_json(request):
                         department=item.get('college', ''),
                         university_world_ranking=324
                     )
+                    logger.info(f"Professor {item.get('name', '')} created successfully")
                 except IntegrityError as e:
-                    # Catch unique constraint violation (IntegrityError) and log it
-                    print(f"IntegrityError: {e}")
-                    # Optionally, you can skip the current iteration and continue with the next one
+                    logger.error(f"IntegrityError: {e}")
                     continue
-            messages.success(request,'Congratulations,you successfully uploaded data !')
+
+                # Send progress update to WebSocket consumer
+                async_to_sync(channel_layer.group_send)(
+                    'progress_group',
+                    {
+                        'type': 'send.progress_update',
+                        'progress': calculate_progress(data)  # Calculate progress here
+                    }
+                )
+
+            messages.success(request,'Congratulations, you successfully uploaded data!')
             return HttpResponseRedirect(request.path_info)
         else:
-            messages.error(request,'There is a problem please try again later !')
+            messages.error(request,'There is a problem please try again later!')
     else:
         form = JSONFileUploadForm()
 
@@ -510,11 +533,11 @@ def prof_detail(request,slug):
 
     print("saalam")
 
-    # professors = Professor.objects.all()
-    for professor_instance in Professor.objects.all():
-        count = professor_instance.get_non_empty_field_count()
-        print("      \n")
-        print(f"Instance {professor_instance.id}: Non-empty field count - {count}")
+    # # professors = Professor.objects.all()
+    # for professor_instance in Professor.objects.all():
+    #     count = professor_instance.get_non_empty_field_count()
+    #     print("      \n")
+    #     print(f"Instance {professor_instance.id}: Non-empty field count - {count}")
 
     
     return render(request,"customer/prof_detail.html",context)

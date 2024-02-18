@@ -1966,6 +1966,7 @@
       });
 
       $('.nav-link').on('click', function () {
+        page = 1;
         selectedTab = $(this).attr('href').replace('#productnav-', ''); // Update selectedTab value
         console.log(selectedTab); // Log the selected tab
         filterProfessors(selectedTab); // Filter professors based on the selected tab
@@ -2289,6 +2290,46 @@
     maxFilesize:2,
     acceptedFiles:'.json',
 })
+</script>
+
+
+
+
+
+
+<script>
+    function fetchData() {
+        fetch('/upload_json/', {
+            method: 'POST',
+            body: new FormData(document.getElementById('upload-form')),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Data uploaded successfully!') {
+                updateUI(data.data);
+            } else {
+                console.error('Upload failed:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error during upload:', error);
+        });
+    }
+
+    function updateUI(data) {
+        const dataList = document.getElementById('data-list');
+        data.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Name: ${item.name}, Phone: ${item.phone}`; // Adjust according to your data structure
+            dataList.appendChild(listItem);
+        });
+    }
+
+    // Poll for updates every 5 seconds
+    setInterval(fetchData, 5000);
+
+    // Initial data fetch when the page loads
+    fetchData();
 </script>
 <!-- Render Django messages and trigger toast notification -->
 <!-- Render Django messages and trigger toast notification -->

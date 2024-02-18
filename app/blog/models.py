@@ -73,22 +73,20 @@ class Professor(models.Model):
 
 
     TITLE_WEIGHTS = {
-        "Professor": 1.0,
-        "Associate Professor": 0.9,
-        "Assistant Professor": 0.8,
-        "Lecturer": 0.7,
-        "Adjunct Professor": 0.6,
-        "Clinical": 0.5,
-        "Research Assistant": 0.4,
-        "Emeritus": 0.9,
-        "Senior Lecturer": 0.7,
-        "Assistant Lecturer": 0.6,
-        "Distinguished Professor": 1.1,
-        "PhD student": 0.3
+        "Professor": 10.0,
+        "Associate Professor": 9.0,
+        "Assistant Professor": 8.0,
+        "Lecturer": 7.0,
+        "Adjunct Professor": 6.0,
+        "Clinical": 5.0,
+        "Research Assistant": 4.0,
+        "Emeritus": 9.0,
+        "Senior Lecturer": 7.0,
+        "Assistant Lecturer": 6.0,
+        "PhD student": 3.0
     }
 
     def calculate_rating(self):
-        # Calculate the rating based on the count of non-empty fields, university world ranking, and title
         non_empty_fields = [
             self.name, self.title, self.phone, self.address,
             self.introduction, self.achievements, self.city,
@@ -97,17 +95,42 @@ class Professor(models.Model):
             self.university, self.department
         ]
         non_empty_fields_count = sum(field is not None for field in non_empty_fields)
+        # Calculate non_empty_fields_rating between 0 and 10
+        if non_empty_fields_count == 0:
+            non_empty_fields_rating = 0.0
+        else:
+            non_empty_fields_rating = min(non_empty_fields_count / len(non_empty_fields), 1.0) * 10
 
         if non_empty_fields_count == 0:
             self.rating = 0.0
         else:
             title_weight = self.TITLE_WEIGHTS.get(self.title, 0)
-            non_empty_fields_rating = non_empty_fields_count / len(non_empty_fields)
-            world_ranking_factor = 0.5  # Adjust as needed
-            title_score = title_weight * 0.5 if self.title else 0  # Assuming half weight for title
-            world_ranking_score = self.university_world_ranking * world_ranking_factor
-            self.rating = (non_empty_fields_rating + title_score + world_ranking_score) * 10  # Scale to 0-10
-        self.save()
+            # Adjust world ranking weight based on ranking (lower ranking gets higher weight)
+            if self.university_world_ranking == 0:
+                world_ranking_factor = 1  # Handling edge case where ranking is 0
+            else:
+                world_ranking_factor = max(1 - (self.university_world_ranking / 1000), 0)  # Normalize ranking to a factor between 0 and 1, capping negative factors at 0
+
+            # Calculate title score
+            title_score = title_weight if self.title else 0
+
+            # Calculate world ranking score
+            world_ranking_score = 10 * world_ranking_factor  # Scale to 0-10 range
+
+            # Calculate total score
+            total_score = (non_empty_fields_rating + title_score + world_ranking_score) / 3
+
+            # Scale the total score to a range of 0-10
+            self.rating = round(total_score, 3)
+
+            # Print total score
+            print("Non Empty Fields Score",non_empty_fields_rating)
+            print("Title Score:",title_score)
+            print("World Ranking:",world_ranking_score)
+            print("Total Rating:", self.rating)
+
+
+
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -127,10 +150,10 @@ class Professor(models.Model):
 
 
 @receiver(post_save, sender=Professor)
-def after_save(sender, instance, created, **kwargs):
-    if created:
-
-        instance.calculate_rating()
+def after_save(sender, instance, **kwargs):
+    print("qaqa after_save icindeyem")
+    instance.calculate_rating()
+    # instance.save()
 
 
 
