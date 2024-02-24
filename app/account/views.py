@@ -78,10 +78,10 @@ def logout_view(request):
 
 
 
-
 @login_required(login_url='/user_login/')
 @user_passes_test(check_is_admin)
 def dashboard(request):
+
     return render(request,"dashboard/index.html")
 
 
@@ -253,54 +253,21 @@ def professor_update(request,slug=None):
 
 
 
-
-
-
+from app.tasks import process_json_data
 
 def upload_json(request):
     if request.method == 'POST':
         uploaded_files = request.FILES.getlist('file')
-        data_to_send = []
         
-          
+        # Process each uploaded file asynchronously
         for uploaded_file in uploaded_files:
-            try:
-                # Process the uploaded JSON file
-                decoded_data = uploaded_file.read().decode('utf-8')
-                data = json.loads(decoded_data)
-
-                # Save the data to the database
-                for item in data:
-                    try:
-                        Professor.objects.create(
-                            name=item.get('name', ''),
-                            introduction=item.get('introduction', ''),
-                            phone=item.get('phone', ''),
-                            address=item.get('address', ''),
-                            achievements=item.get('achievements', ''),
-                            url=item.get('url', ''),
-                            city=item.get('city', ''),
-                            province=item.get('province', ''),
-                            country="US",
-                            title=item.get('title', ''),
-                            email=item.get('email', ''),
-                            image_url=item.get('photo', ''),
-                            research_areas=item.get('direction', ''),
-                            university=item.get('school', ''),
-                            department=item.get('college', ''),
-                            university_world_ranking=324
-                        )
-                    except IntegrityError as e:
-                        # Catch unique constraint violation (IntegrityError) and log it
-                        print(f"IntegrityError: {e}")
-                        # Optionally, you can skip the current iteration and continue with the next one
-                        continue
-                    data_to_send.append(item)
-                    print(data_to_send)
-            except Exception as e:
-                return JsonResponse({'error': str(e)}, status=400)
-        # Return success response
-        return JsonResponse({'message': 'Data uploaded successfully!','data': data_to_send})
+            # Read and decode the uploaded file
+            decoded_data = uploaded_file.read().decode('utf-8')
+            # Trigger the Celery task asynchronously
+            process_json_data.delay(decoded_data)
+        
+        # Return a response indicating successful submission
+        return JsonResponse({'message': 'Data processing started.'})
     
     
     return render(request, 'dashboard/upload_json.html')

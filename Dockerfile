@@ -9,6 +9,8 @@ RUN apk add --update --no-cache \
     openjdk11 \
     bash
 
+
+
 # Install Elasticsearch Python client
 # RUN /py/bin/pip install elasticsearch
 

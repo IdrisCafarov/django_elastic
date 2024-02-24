@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_elasticsearch_dsl',
     # 'elasticsearch-dsl',
     'django_elasticsearch_dsl_drf',
+    'django_celery_beat',
     'crispy_forms',
     'crispy_bootstrap5',
     'rest_framework',
@@ -216,3 +217,12 @@ LOGIN_URL = '/user_login/'  # Replace with your custom login URL
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+
+
+
+CELERY_RESULT_BACKEND = "redis://redis:6379"
+
+
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')

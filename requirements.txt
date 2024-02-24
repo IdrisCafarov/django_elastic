@@ -34,3 +34,10 @@ sqlparse==0.3.1
 text-unidecode==1.3
 channels
 daphne
+langchain
+openai
+langchain-openai
+celery==5.2.0
+redis==3.5.3
+django-celery-beat
+django_celery_results==2.2.0
