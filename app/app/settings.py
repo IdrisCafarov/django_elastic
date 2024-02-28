@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'core',
     'blog',
     'account',
+    'websockets',
     #installed apps
     'django_elasticsearch_dsl',
     # 'elasticsearch-dsl',
@@ -51,7 +53,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'rest_framework',
     'django_filters',
-    'channels',
     
     
 
@@ -92,6 +93,18 @@ TEMPLATES = [
     },
 ]
 
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
+
+
+
+
+ASGI_APPLICATION = 'app.routing.application'
 WSGI_APPLICATION = 'app.wsgi.application'
 
 
@@ -170,11 +183,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.MyUser'
 
 # Elasticsearch
-# ELASTICSEARCH_DSL = {
-#     'default': {
-#         'hosts': os.getenv("ELASTICSEARCH_DSL_HOSTS", 'localhost:9200')
-#     },
-# }
+
 ELASTICSEARCH_DSL = {
     "default": {
         "hosts": ["http://es:9200"],
@@ -223,6 +232,4 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 CELERY_RESULT_BACKEND = "redis://redis:6379"
-
-
 CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')

@@ -541,4 +541,9 @@ def prof_detail(request,slug):
 
     
     return render(request,"customer/prof_detail.html",context)
+
+
+
+def test(request):
+    return render(request,"dashboard/test.html")
     

@@ -44,6 +44,7 @@ WORKDIR /app
 # Expose the Elasticsearch port
 EXPOSE 8000
 EXPOSE 9200
+EXPOSE 8001
 
 ENV PATH="/scripts:/py/bin:$PATH"
 

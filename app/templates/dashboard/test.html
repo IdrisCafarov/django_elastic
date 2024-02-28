@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My Langchain Testing motherfucker</h1>
+<p>My first paragraph.</p>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="prompt" id="prompt">
+    <button type="submit">Submit</button>
+
+</form>
+<p>{{result}}</p>
+
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+    <html>
+      <head>
+        <script src='https://8x8.vc/vpaas-magic-cookie-abd05583eb564d659f761fe374ed98c3/external_api.js' async></script>
+        <style>html, body, #jaas-container { height: 100%; }</style>
+        <script type="text/javascript">
+          window.onload = () => {
+            const api = new JitsiMeetExternalAPI("8x8.vc", {
+              roomName: "vpaas-magic-cookie-abd05583eb564d659f761fe374ed98c3/SampleAppVerticalDesertsNumberRudely",
+              parentNode: document.querySelector('#jaas-container'),
+							// Make sure to include a JWT if you intend to record,
+							// make outbound calls or use any other premium features!
+							// jwt: "eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtYWJkMDU1ODNlYjU2NGQ2NTlmNzYxZmUzNzRlZDk4YzMvNzZlZGJkLVNBTVBMRV9BUFAiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJqaXRzaSIsImlzcyI6ImNoYXQiLCJpYXQiOjE3MDgwMTY3NTUsImV4cCI6MTcwODAyMzk1NSwibmJmIjoxNzA4MDE2NzUwLCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtYWJkMDU1ODNlYjU2NGQ2NTlmNzYxZmUzNzRlZDk4YzMiLCJjb250ZXh0Ijp7ImZlYXR1cmVzIjp7ImxpdmVzdHJlYW1pbmciOmZhbHNlLCJvdXRib3VuZC1jYWxsIjpmYWxzZSwic2lwLW91dGJvdW5kLWNhbGwiOmZhbHNlLCJ0cmFuc2NyaXB0aW9uIjpmYWxzZSwicmVjb3JkaW5nIjpmYWxzZX0sInVzZXIiOnsiaGlkZGVuLWZyb20tcmVjb3JkZXIiOmZhbHNlLCJtb2RlcmF0b3IiOnRydWUsIm5hbWUiOiJUZXN0IFVzZXIiLCJpZCI6Imdvb2dsZS1vYXV0aDJ8MTA0MzkyNTI4NTE4OTIwODEwNzI1IiwiYXZhdGFyIjoiIiwiZW1haWwiOiJ0ZXN0LnVzZXJAY29tcGFueS5jb20ifX0sInJvb20iOiIqIn0.O5jPkh5GeXdkUvEEmy70YcCL5MDh-ZZPOMIwWQOxdJ_qtOzC95vjuzFo0eJS67rOZMMrfj4xxkNyW-ll9cv5i8KE8vtT1AnE96e11heNVR3WsX0BAgsw0mTWzN6ud-rX_n1fymAyDcw0yvvBa_9q54-58VKqXlbjeb072P4reYzEJHClj1XDEGEDSCYtv0Ho1vUWxuJjPjE3Ir8q-o4RAFPz69PPS37ppucFEbsQhYgWCZujAn0A0QG-1S3xchYS7uPyIxgQ5ZRgYEVE5kWfkc6doA3j9pYjdPlQPRLUFLzmnN7glu7aKEJ6gaosDop73XX8EP2QBJBqJYGU0djzJw"
+            });
+          }
+        </script>
+      </head>
+      <body><div id="jaas-container" /></body>
+    </html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Custom Response</title>
+</head>
+<body>
+    <h1>WebSocket Custom Response</h1>
+    <div id="conversation"></div>
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button onclick="sendText()">Send</button>
+
+    <script>
+        // WebSocket server URL
+        const wsUrl = 'ws://localhost:8001/ws/mywebsocket/';
+
+        // WebSocket object
+        let ws;
+
+        // Function to handle WebSocket errors
+        function handleError(error) {
+            console.error('WebSocket error:', error);
+        }
+
+        // Function to send text input to the WebSocket server
+        function sendText() {
+            const textInput = document.getElementById('textInput');
+            const text = textInput.value.trim();
+            if (text) {
+                if (ws.readyState === WebSocket.OPEN) {
+                    ws.send(text);
+                    appendToConversation('You: ' + text); // Display user's message in conversation
+                    textInput.value = ''; // Clear input field
+                } else {
+                    console.error('WebSocket not open');
+                }
+            } else {
+                console.error('Text input is empty');
+            }
+        }
+
+        // Function to append messages to the conversation display
+        function appendToConversation(message) {
+            const conversationDiv = document.getElementById('conversation');
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            conversationDiv.appendChild(messageDiv);
+        }
+
+        // Function to connect to WebSocket server
+        function connectWebSocket() {
+            ws = new WebSocket(wsUrl);
+            ws.onmessage = function(event) {
+                appendToConversation('Bot: ' + event.data); // Display bot's response in conversation
+            };
+            ws.onerror = handleError;
+        }
+
+        // Connect to WebSocket when the page loads
+        window.onload = connectWebSocket;
+    </script>
+</body>
+</html>

@@ -29,6 +29,7 @@ urlpatterns = [
     # path('upload_json/',upload_json,name="upload_json"),
     # path('search/suggestions/', SearchSuggestionView.as_view(), name='search_suggestions'),
     path('prof_detail/<slug>/',prof_detail,name="prof_detail"),
+    path('test/',test,name="test"),
 
     
 ]
