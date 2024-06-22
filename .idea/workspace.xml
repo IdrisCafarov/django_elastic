@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2f529606-f043-47cf-a866-7e101079849a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/migrations/0002_myuser_is_customer.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/migrations/0002_myuser_is_customer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/celery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/routing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/documents/analyzers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/documents/analyzers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/documents/professor_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/documents/professor_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0002_reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0002_reply.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0003_professor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0003_professor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0004_auto_20240102_0558.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0004_auto_20240102_0558.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0005_alter_professor_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0005_alter_professor_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0006_alter_professor_unique_together.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0006_alter_professor_unique_together.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0007_auto_20240102_0919.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0007_auto_20240102_0919.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0008_rename_collegel_professor_college.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0008_rename_collegel_professor_college.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0009_professor_slug.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0009_professor_slug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0010_auto_20240108_0236.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0010_auto_20240108_0236.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0011_professor_url.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0011_professor_url.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0012_auto_20240124_0140.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0012_auto_20240124_0140.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0013_remove_professor_rating.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0013_remove_professor_rating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0014_professor_rating.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0014_professor_rating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0015_remove_professor_rating.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0015_remove_professor_rating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0016_title.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0016_title.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0017_professor_public.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0017_professor_public.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0018_professor_rating.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0018_professor_rating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0019_professor_draft.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0019_professor_draft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/migrations/0020_remove_professor_draft.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/migrations/0020_remove_professor_draft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/management/commands/load_posts.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/management/commands/load_posts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/management/commands/update_elasticsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/management/commands/update_elasticsearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/management/commands/wait_for_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/management/commands/wait_for_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/management/commands/wait_for_es.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/management/commands/wait_for_es.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/css/icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/css/icons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/css/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/css/tailwind.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/boxiconsd41d.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/boxiconsd41d.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/dripicons-v2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/dripicons-v2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/fa-v4compatibility-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/fa-v4compatibility-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/fa-v4compatibility.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/fa-v4compatibility.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-400.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-400.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-400d41d.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-400d41d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-401.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-401.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-402.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-402.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-403.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-brands-404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-400.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-400.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-400d41d.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-400d41d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-401.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-401.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-402.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-402.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-403.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-404.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-regular-404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-900.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-900.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-900d41d.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-900d41d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-901.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-901.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-902.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-902.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-903.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-903.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-904.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/fonts/la-solid-904.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/images/bg-counter.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/images/bg-counter.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/images/dark-logo.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/images/dark-logo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/images/logo/instagram.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/images/logo/instagram.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/images/logo/mailchimp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/images/logo/mailchimp.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/images/logo/wordpress.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/images/logo/wordpress.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/alerts.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/alerts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/area-filter-range.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/area-filter-range.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/blog-details.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/blog-details.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/candidate.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/candidate.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/coming-soon.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/coming-soon.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/counter.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/counter.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/dropdown&amp;modal.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/dropdown&amp;modal.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/job-grid.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/job-grid.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/job-list.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/job-list.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/lightbox.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/lightbox.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/nav&amp;tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/nav&amp;tabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/swiper.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/swiper.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/js/pages/switcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/js/pages/switcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/libs/@popperjs/core/umd/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/libs/@popperjs/core/umd/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/libs/choices.js/public/assets/scripts/choices.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/libs/choices.js/public/assets/scripts/choices.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/libs/masonry-layout/masonry.pkgd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/libs/masonry-layout/masonry.pkgd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/libs/simplebar/simplebar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/libs/simplebar/simplebar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/libs/swiper/swiper-bundle.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/libs/swiper/swiper-bundle.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets/libs/swiper/swiper-bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets/libs/swiper/swiper-bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/css/custom.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/css/custom.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/css/icons.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/css/icons.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/fonts/boxiconsd41d.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/fonts/boxiconsd41d.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/fonts/la-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/fonts/la-brands-400.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/fonts/la-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/fonts/la-regular-400.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/fonts/la-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/fonts/la-solid-900.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/fonts/remixiconca45.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/fonts/remixiconca45.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/clients/amazon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/clients/amazon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/clients/lenovo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/clients/lenovo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/clients/paypal.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/clients/paypal.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/clients/shopify.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/clients/shopify.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/clients/verizon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/clients/verizon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/clients/walmart.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/clients/walmart.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/ae.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/ae.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/china.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/china.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/french.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/french.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/germany.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/germany.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/italy.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/italy.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/russia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/russia.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/spain.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/spain.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/flags/us.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/flags/us.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/images/svg/bell.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/images/svg/bell.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/crm-companies.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/crm-companies.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/crm-contact.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/crm-contact.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/crm-deals.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/crm-deals.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/dashboard-ecommerce.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/dashboard-ecommerce.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/ecommerce-product-create.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/ecommerce-product-create.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/form-file-upload.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/form-file-upload.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/form-pickers.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/form-pickers.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/form-validation.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/form-validation.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/invoicedetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/invoicedetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/invoiceslist.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/invoiceslist.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/js/pages/sweetalerts.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/js/pages/sweetalerts.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/pickr.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/pickr.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/themes/classic.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/themes/classic.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/themes/monolith.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/themes/monolith.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/themes/nano.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@simonwep/pickr/themes/nano.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@tarekraafat/autocomplete.js/autoComplete.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@tarekraafat/autocomplete.js/autoComplete.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@tarekraafat/autocomplete.js/css/autoComplete.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@tarekraafat/autocomplete.js/css/autoComplete.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/@tarekraafat/autocomplete.js/css/images/search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/@tarekraafat/autocomplete.js/css/images/search.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/apexcharts/apexcharts.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/apexcharts/apexcharts.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/card/card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/card/card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/chart.js/chart.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/chart.js/chart.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/cleave.js/cleave.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/cleave.js/cleave.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/dropzone/dropzone-min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/dropzone/dropzone-min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/dropzone/dropzone.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/dropzone/dropzone.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/echarts/echarts.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/echarts/echarts.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/feather-icons/feather.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/feather-icons/feather.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/fg-emoji-picker/fgEmojiPicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/fg-emoji-picker/fgEmojiPicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/filepond/filepond.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/filepond/filepond.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/filepond/filepond.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/filepond/filepond.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/fullcalendar/index.global.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/fullcalendar/index.global.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/gmaps/gmaps.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/gmaps/gmaps.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/gridjs/gridjs.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/gridjs/gridjs.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/isotope-layout/isotope.pkgd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/isotope-layout/isotope.pkgd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/css/jsvectormap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/css/jsvectormap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/js/jsvectormap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/js/jsvectormap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/canada.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/canada.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/russia.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/russia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/spain.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/spain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/us-merc-en.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/us-merc-en.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/world-merc.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/jsvectormap/maps/world-merc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/leaflet/leaflet.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/leaflet/leaflet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/leaflet/leaflet.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/leaflet/leaflet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/list.js/list.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/list.js/list.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/list.pagination.js/list.pagination.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/list.pagination.js/list.pagination.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/masonry-layout/masonry.pkgd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/masonry-layout/masonry.pkgd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/moment/moment.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/moment/moment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/multi.js/multi.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/multi.js/multi.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/node-waves/waves.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/node-waves/waves.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/particles.js/particles.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/particles.js/particles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/prismjs/prism.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/prismjs/prism.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.bubble.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.bubble.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.core.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.core.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.snow.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/quill/quill.snow.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/rater-js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/rater-js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/shepherd.js/css/shepherd.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/shepherd.js/css/shepherd.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/shepherd.js/js/shepherd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/shepherd.js/js/shepherd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/simplebar/simplebar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/simplebar/simplebar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/sortablejs/Sortable.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/sortablejs/Sortable.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/sweetalert2/sweetalert2.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/sweetalert2/sweetalert2.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/sweetalert2/sweetalert2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/sweetalert2/sweetalert2.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/swiper/swiper-bundle.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/swiper/swiper-bundle.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/assets_2/libs/swiper/swiper-bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/assets_2/libs/swiper/swiper-bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/alert.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/alert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/filtered_professors.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/filtered_professors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/main_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/main_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/prof_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/prof_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/customer/upload_json.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/customer/upload_json.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/add_professor.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/add_professor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/alerts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/filtered_professors.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/filtered_professors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/professor_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/professor_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/professors.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/professors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/dashboard/upload_json.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/dashboard/upload_json.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/agent_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/agent_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/consumers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/routing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/tools/index_data_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/tools/index_data_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/tools/index_details_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/tools/index_details_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/tools/index_search_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/tools/index_search_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/websockets/tools/list_indices_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/websockets/tools/list_indices_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose-deploy-future.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose-deploy-future.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose-deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose-deploy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/certbot/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/certbot/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/certbot/certify-init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/certbot/certify-init.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/proxy/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/proxy/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/proxy/nginx/default-ssl.conf.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/docker/proxy/nginx/default-ssl.conf.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/proxy/nginx/default.conf.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/docker/proxy/nginx/default.conf.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/proxy/nginx/options-ssl-nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/proxy/nginx/options-ssl-nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/proxy/nginx/uwsgi_params" beforeDir="false" afterPath="$PROJECT_DIR$/docker/proxy/nginx/uwsgi_params" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/proxy/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/proxy/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.json" beforeDir="false" afterPath="$PROJECT_DIR$/sample.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2i7tk9nK9Jra7pXjKzG4f737Hnd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/idris/Documents/django_elastic",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17011.127" />
+        <option value="bundled-python-sdk-48aec45f0201-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17011.127" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2f529606-f043-47cf-a866-7e101079849a" name="Changes" comment="" />
+      <created>1718853583209</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718853583209</updated>
+      <workItem from="1718853584222" duration="647000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
